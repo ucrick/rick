@@ -34,6 +34,7 @@
         }
 
         .submenu {
+            display: none;
             background-color: #fff;
             border-bottom: 1px solid #ddd;
             padding: 10px 0;
@@ -104,15 +105,50 @@
         footer p {
             margin: 0;
         }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2em;
+            display: inline-block;
+            margin-right: auto;
+            color: #fff;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+
+        header nav .menu {
+            margin-left: auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu .research:hover + .submenu,
+        .submenu:hover {
+            display: block;
+        }
+
+        .submenu {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Research</a>
-            <a href="#">Teams</a>
-            <a href="#">Publications</a>
+            <div class="logo">HPMS Research Group</div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#" class="research">Research</a>
+                <a href="#">Teams</a>
+                <a href="#">Publications</a>
+            </div>
         </nav>
     </header>
     <div class="submenu">
