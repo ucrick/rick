@@ -12,26 +12,40 @@
         }
 
         header {
-            background-color: #000;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
+            border-bottom: 1px solid #ddd;
             padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         header nav {
             display: flex;
+            justify-content: center;
             gap: 15px;
         }
 
         header a {
-            color: #fff;
+            color: #000;
             text-decoration: none;
             font-weight: bold;
         }
 
         header a:hover {
+            text-decoration: underline;
+        }
+
+        .submenu {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .submenu a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .submenu a:hover {
             text-decoration: underline;
         }
 
@@ -93,7 +107,6 @@
 </head>
 <body>
     <header>
-        <div class="logo">HPMS RESEARCH GROUP</div>
         <nav>
             <a href="#">Home</a>
             <a href="#">Research</a>
@@ -101,6 +114,12 @@
             <a href="#">Publications</a>
         </nav>
     </header>
+    <div class="submenu">
+        <a href="#">High-Performance Structures</a>
+        <a href="#">Anti-Seismic Devices</a>
+        <a href="#">Structural Fire</a>
+        <a href="#">AI in Structures</a>
+    </div>
     <div class="container">
         <div class="sidebar">
             <img src="https://via.placeholder.com/150" alt="Profile Picture">
