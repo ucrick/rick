@@ -63,7 +63,7 @@
             background-color: #f0f0f0;
         }
 
-        nav .has-dropdown:hover .dropdown {
+        nav .has-dropdown.open .dropdown {
             display: flex;
         }
 
@@ -122,6 +122,17 @@
             margin: 0;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownTrigger = document.querySelector('.has-dropdown > a');
+            const dropdown = document.querySelector('.dropdown');
+
+            dropdownTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.parentElement.classList.toggle('open');
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
