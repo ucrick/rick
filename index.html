@@ -89,15 +89,17 @@
         }
 
         .sidebar .details {
-            text-align: center; /* Ensure the text and links are centered */
             display: flex;
             flex-direction: column;
-            align-items: center; /* This centers the anchor tags horizontally */
+            align-items: center; /* This centers the links horizontally */
+            text-align: left; /* This left-aligns the text inside each link */
+            width: 100%; /* Ensure the container takes the full width for centering */
         }
-
+        
         .sidebar .details a {
+            width: 100%; /* Make the links take up the full width */
             display: flex;
-            align-items: center; /* 垂直居中对齐图标和文字 */
+            align-items: center; /* Ensure the icon and text are vertically aligned */
             color: #000;
             text-decoration: none;
             margin: 5px 0;
