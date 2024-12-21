@@ -14,15 +14,15 @@
         header {
             background-color: #000;
             color: #fff;
-            padding: 20px 20px 10px; /* Increased bottom padding */
+            padding: 20px 20px 10px;
             display: flex;
-            align-items: flex-end; /* Align items to the bottom */
+            align-items: flex-end;
         }
 
         .logo {
             flex: 1;
             font-weight: bold;
-            font-size: 1.5em; /* Increased font size */
+            font-size: 1.7em;
         }
 
         nav {
@@ -78,24 +78,33 @@
             padding: 20px;
             background-color: #f4f4f4;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .sidebar img {
-            width: 120px; /* Adjusted width */
-            height: 120px; /* Adjusted height */
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             margin-bottom: 10px;
         }
 
         .sidebar .details {
-            text-align: center;
+            text-align: left;
+            margin-top: 10px;
         }
 
         .sidebar .details a {
-            display: block;
+            display: flex;
+            align-items: center;
             color: #000;
             text-decoration: none;
-            margin: 5px 0;
+            margin: 10px 0;
+        }
+
+        .sidebar .details a img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
         }
 
         .sidebar .details a:hover {
@@ -145,13 +154,13 @@
     </header>
     <div class="container">
         <div class="sidebar">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <img src="images/profile.jpg" alt="Profile Picture">
             <div class="details">
                 <p><strong>KE JIANG</strong></p>
-                <a href="#">Email</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">Google Scholar</a>
-                <a href="#">Website</a>
+                <a href="#"><img src="images/email-icon.png" alt="Email Icon">Email</a>
+                <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn Icon">LinkedIn</a>
+                <a href="#"><img src="images/google-scholar-icon.png" alt="Google Scholar Icon">Google Scholar</a>
+                <a href="#"><img src="images/website-icon.png" alt="Website Icon">Website</a>
             </div>
         </div>
         <div class="content">
