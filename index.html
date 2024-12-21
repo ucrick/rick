@@ -27,7 +27,9 @@
         nav {
             display: flex;
             gap: 15px;
-            position: relative;
+            position: absolute;
+            top: 50px;
+            left: 0;
         }
 
         nav a {
@@ -96,6 +98,12 @@
             margin: 5px 0;
         }
 
+        .sidebar .details a img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
         .sidebar .details a:hover {
             text-decoration: underline;
         }
@@ -105,9 +113,6 @@
             padding: 20px;
         }
 
-        header, .content h1 {
-            margin-left: 0;
-        }
 
         footer {
             background-color: #000;
