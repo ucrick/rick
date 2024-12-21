@@ -29,7 +29,7 @@
             gap: 15px;
             position: absolute;
             top: 30px;
-            left:350px;
+            left:330px;
         }
 
         nav a {
@@ -92,17 +92,20 @@
         }
 
         .sidebar .details a {
-            display: block;
+            display: flex;
+            align-items: center; /* 垂直居中对齐图标和文字 */
             color: #000;
             text-decoration: none;
             margin: 5px 0;
         }
 
         .sidebar .details a img {
-            width: 16px;
+            width: 16px; /* 根据图标实际大小调整 */
             height: 16px;
-            margin-right: 8px;
+            margin-right: 8px; /* 图标与文字之间的间距 */
+            vertical-align: middle; /* 确保与文字中线对齐 */
         }
+
 
         .sidebar .details a:hover {
             text-decoration: underline;
