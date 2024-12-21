@@ -48,23 +48,26 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #000;
-            border: 1px solid #ddd;
+            background-color: #fff; /* Change the background color to white or any light color */
+            border: 1px solid #ddd; /* Optionally keep the border to separate the items */
             display: none;
             flex-direction: column;
             z-index: 10;
         }
-
+        
+        /* Update the hover effect for dropdown items */
         .dropdown a {
             color: #000;
             padding: 10px;
             text-decoration: none;
             white-space: nowrap;
+            background-color: #fff; /* Ensure background is consistent */
+        }
+        
+        .dropdown a:hover {
+            background-color: #f0f0f0; /* Change to a lighter hover color */
         }
 
-        .dropdown a:hover {
-            background-color: #f0f0f0;
-        }
 
         nav .has-dropdown:focus-within .dropdown {
             display: flex;
