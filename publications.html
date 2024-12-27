@@ -9,49 +9,34 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            transform: translate(100px, 30px); /* 向右移动100px，向下移动50px */
         }
 
         header {
             color: #000;
-            padding: 20px 20px 10px;
+            padding: 20px;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ddd;
         }
 
-        .logo {
-            flex: 1;
-            font-weight: bold;
-            font-size: 1.5em;
+        .logo img {
+            max-width: 150px;
+            max-height: 50px;
+            height: auto;
+            width: auto;
         }
-		
-		.logo img {
-			max-width: 150px; /* 设置图片的最大宽度 */
-			max-height: 50px; /* 设置图片的最大高度 */
-			height: auto; /* 保持宽高比 */
-			width: auto; /* 保持宽高比 */
-		}
 
-
-		
-		
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
         nav {
             display: flex;
-            gap: 70px;
-            position: absolute;
-            top: 30px;
-            left: 375px;
-            font-family: 'Montserrat';
+            gap: 30px;
         }
 
         nav a {
             color: #000;
             text-decoration: none;
             font-weight: bold;
-            position: relative;
-            font-size: 1.2em; /* 调整字体大小 */
-            font-family: 'Montserrat';
         }
 
         nav a:hover {
@@ -68,28 +53,43 @@
             flex-direction: column;
             z-index: 10;
         }
-        
-		.dropdown a {
-			color: #000;
-			padding: 10px;
-			text-decoration: none;
-			white-space: nowrap;
-			background-color: #fff; /* Ensure background is consistent */
-			font-size: 0.8em; /* 调整字体大小，变小一些 */
-		}
 
-        
+        .dropdown a {
+            color: #000;
+            padding: 10px;
+            text-decoration: none;
+            background-color: #fff;
+        }
+
         .dropdown a:hover {
             background-color: #f0f0f0;
         }
 
-        nav .has-dropdown:focus-within .dropdown {
+        .has-dropdown {
+            position: relative;
+        }
+
+        .has-dropdown.open .dropdown {
             display: flex;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #000;
+            margin: 5px 0;
         }
 
         .container {
             display: flex;
             margin: 20px;
+            flex-wrap: wrap;
         }
 
         .sidebar {
@@ -105,62 +105,67 @@
             margin-bottom: 10px;
         }
 
-        .sidebar .details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            width: 100%;
-        }
-        
-        .sidebar .details a {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            color: #000;
-            text-decoration: none;
-            margin: 5px 0;
-        }
-
-        .sidebar .details a img {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            vertical-align: middle;
-            margin-left: 70px;
-        }
-
-        .sidebar .details a:hover {
-            text-decoration: underline;
-        }
-
         .content {
             flex: 1;
             padding: 20px;
-	    margin-left: 45px;
+            min-width: 300px;
         }
 
-		footer {
-			background-color: #000;
-			color: #fff;
-			text-align: center;
-			padding: 50px 0; /* 增加上下内边距 */
-			margin: 0; /* 移除默认的外边距 */
-			width: 100vw; /* 设置宽度为视口宽度，覆盖整个页面宽度 */
-			position: relative; /* 保持正常文档流，确保布局一致 */
-			left: -100px; /* 补偿 body 的 transform 向右偏移 */
-		}
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
 
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background-color: #f8f8f8;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                gap: 10px;
+                border-top: 1px solid #ddd;
+            }
 
+            nav.open {
+                display: flex;
+            }
 
-        footer p {
-            margin: 0;
+            .menu-toggle {
+                display: block;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo"><img src="images/H1.jpg" alt="Logo Icon"></div>
+        <div class="logo">
+            <img src="images/H1.jpg" alt="Logo Icon">
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <a href="index.html">Home</a>
             <div class="has-dropdown">
@@ -181,100 +186,35 @@
             <img src="https://via.placeholder.com/150" alt="Profile Picture">
             <div class="details">
                 <p><strong>KE JIANG</strong></p>
-                <a href="#"><img src="images/H1.jpg" alt="Email Icon">Email</a>
-                <a href="#"><img src="images/H1.jpg" alt="LinkedIn Icon">LinkedIn</a>
-                <a href="#"><img src="images/H1.jpg" alt="Google Scholar Icon">Google Scholar</a>
-                <a href="#"><img src="images/H1.jpg" alt="Website Icon">Website</a>
+                <p>Email | LinkedIn | Google Scholar | Website</p>
             </div>
         </div>
-	    
-<div class="content">
-    <h1>Sample Table</h1>
-    <div style="position: absolute; top: 190px; left: 44%; transform: translateX(-50%);">
-        <table border="0" cellspacing="0" cellpadding="5" style="border-collapse: collapse; width: 600px; text-align: center;">
-            <colgroup>
-                <col style="width: 70%;"> <!-- 第一列占 70% -->
-                <col style="width: 30%;"> <!-- 第二列占 30% -->
-            </colgroup>
-            <thead>
-                <tr>
-                    <th style="border-top: 2px solid #000; border-bottom: 2px solid #000; border-right: 2px solid #000;">Column 1</th>
-                    <th style="border-top: 2px solid #000; border-bottom: 2px solid #000;">Column 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 1, Cell 1</td>
-                    <td>Row 1, Cell 2</td>
-                </tr>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 2, Cell 1</td>
-                    <td>Row 2, Cell 2</td>
-                </tr>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 3, Cell 1</td>
-                    <td>Row 3, Cell 2</td>
-                </tr>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 4, Cell 1</td>
-                    <td>Row 4, Cell 2</td>
-                </tr>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 5, Cell 1</td>
-                    <td>Row 5, Cell 2</td>
-                </tr>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 6, Cell 1</td>
-                    <td>Row 6, Cell 2</td>
-                </tr>
-                <tr>
-                    <td  style="border-right: 2px solid #000;">Row 7, Cell 1</td>
-                    <td>Row 7, Cell 2</td>
-                </tr>
-                <tr>
-                    <td style="border-bottom: 2px solid #000;border-right: 2px solid #000;">Row 8, Cell 1</td>
-                    <td style="border-bottom: 2px solid #000;">Row 8, Cell 2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-
-
+        <div class="content">
+            <h1>Research Interests</h1>
+            <p>Details about research interests will go here.</p>
+            <h1>News and Updates</h1>
+            <p>Details about news and updates will go here.</p>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024. High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
     </footer>
 
+    <script>
+        // 菜单切换按钮
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
 
-	    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const dropdownParent = document.querySelector('.has-dropdown');
-            const dropdown = dropdownParent.querySelector('.dropdown');
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
 
-            dropdownParent.addEventListener('click', (event) => {
-                // 阻止默认行为，防止跳转
-                event.preventDefault();
-
-                // 切换显示状态
-                if (dropdown.style.display === 'flex') {
-                    dropdown.style.display = 'none';
-                } else {
-                    dropdown.style.display = 'flex';
-                }
-            });
-
-            // 可选：点击页面其他地方关闭菜单
-            document.addEventListener('click', (event) => {
-                if (!dropdownParent.contains(event.target)) {
-                    dropdown.style.display = 'none';
-                }
-            });
+        // 下拉菜单切换
+        const dropdownParent = document.querySelector('.has-dropdown');
+        dropdownParent.addEventListener('click', (event) => {
+            event.preventDefault();
+            dropdownParent.classList.toggle('open');
         });
     </script>
-
-	
 </body>
 </html>
