@@ -10,18 +10,17 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            transform: translate(100px, 30px);
         }
 
         header {
             color: #000;
-            padding: 20px 20px 10px;
+            padding: 20px;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            flex: 1;
             font-weight: bold;
             font-size: 1.5em;
         }
@@ -34,24 +33,17 @@
         }
 
         /* 导航栏样式 */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
         nav {
             display: flex;
-            gap: 70px;
-            position: absolute;
-            top: 30px;
-            left: 375px;
-            font-family: 'Montserrat';
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
         }
 
         nav a {
             color: #000;
             text-decoration: none;
             font-weight: bold;
-            position: relative;
-            font-size: 1.2em;
-            font-family: 'Montserrat';
+            font-size: 1em;
         }
 
         nav a:hover {
@@ -59,43 +51,57 @@
         }
 
         .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            border: 1px solid #ddd;
             display: none;
             flex-direction: column;
-            z-index: 10;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            z-index: 1000;
         }
 
         .dropdown a {
-            color: #000;
             padding: 10px;
             text-decoration: none;
+            color: #000;
             white-space: nowrap;
             background-color: #fff;
-            font-size: 0.8em;
+            font-size: 0.9em;
         }
 
         .dropdown a:hover {
             background-color: #f0f0f0;
         }
 
-        nav .has-dropdown.open .dropdown {
-            display: flex !important;
+        .has-dropdown:hover .dropdown {
+            display: flex;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #000;
+            margin: 5px 0;
         }
 
         /* 内容容器 */
         .container {
             display: flex;
             margin: 20px;
+            flex-wrap: wrap;
         }
 
         .sidebar {
             width: 250px;
             padding: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .sidebar img {
@@ -106,15 +112,11 @@
         }
 
         .sidebar .details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: left;
             width: 100%;
         }
 
         .sidebar .details a {
-            width: 100%;
             display: flex;
             align-items: center;
             color: #000;
@@ -126,8 +128,6 @@
             width: 16px;
             height: 16px;
             margin-right: 8px;
-            vertical-align: middle;
-            margin-left: 70px;
         }
 
         .sidebar .details a:hover {
@@ -137,7 +137,20 @@
         .content {
             flex: 1;
             padding: 20px;
-            margin-left: 45px;
+            margin-left: 10px;
+        }
+
+        .content table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .content table th, .content table td {
+            padding: 10px;
+            border: 1px solid #000;
         }
 
         /* 页脚样式 */
@@ -145,11 +158,7 @@
             background-color: #000;
             color: #fff;
             text-align: center;
-            padding: 50px 0;
-            margin: 0;
-            width: 100vw;
-            position: relative;
-            left: -100px;
+            padding: 20px 0;
         }
 
         footer p {
@@ -158,36 +167,25 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
             nav {
-                position: relative;
-                top: auto;
-                left: auto;
-                flex-direction: column;
-                gap: 20px;
                 display: none;
+                flex-direction: column;
+                gap: 10px;
                 background-color: #f8f8f8;
-                width: 100%;
                 padding: 10px;
-                margin-top: 20px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
                 z-index: 1000;
             }
 
             nav.open {
                 display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-                cursor: pointer;
-                margin-left: 10px;
-            }
-
-            .menu-toggle span {
-                display: block;
-                width: 25px;
-                height: 3px;
-                background-color: #000;
-                margin: 5px 0;
             }
 
             .container {
@@ -208,6 +206,11 @@
 <body>
     <header>
         <div class="logo"><img src="images/H1.jpg" alt="Logo Icon"></div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <a href="index.html">Home</a>
             <div class="has-dropdown">
@@ -236,54 +239,28 @@
         </div>
         <div class="content">
             <h1>Sample Table</h1>
-            <div style="position: absolute; top: 190px; left: 44%; transform: translateX(-50%);">
-                <table border="0" cellspacing="0" cellpadding="5" style="border-collapse: collapse; width: 600px; text-align: center;">
-                    <colgroup>
-                        <col style="width: 70%;">
-                        <col style="width: 30%;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th style="border-top: 2px solid #000; border-bottom: 2px solid #000; border-right: 2px solid #000;">Column 1</th>
-                            <th style="border-top: 2px solid #000; border-bottom: 2px solid #000;">Column 2</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 1, Cell 1</td>
-                            <td>Row 1, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 2, Cell 1</td>
-                            <td>Row 2, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 3, Cell 1</td>
-                            <td>Row 3, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 4, Cell 1</td>
-                            <td>Row 4, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 5, Cell 1</td>
-                            <td>Row 5, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 6, Cell 1</td>
-                            <td>Row 6, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 2px solid #000;">Row 7, Cell 1</td>
-                            <td>Row 7, Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td style="border-bottom: 2px solid #000; border-right: 2px solid #000;">Row 8, Cell 1</td>
-                            <td style="border-bottom: 2px solid #000;">Row 8, Cell 2</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1, Cell 1</td>
+                        <td>Row 1, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2, Cell 1</td>
+                        <td>Row 2, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td>Row 3, Cell 1</td>
+                        <td>Row 3, Cell 2</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <footer>
@@ -294,15 +271,8 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
-        menuToggle?.addEventListener('click', () => {
+        menuToggle.addEventListener('click', () => {
             nav.classList.toggle('open');
-        });
-
-        // 处理下拉菜单
-        const dropdownParent = document.querySelector('.has-dropdown');
-        dropdownParent?.addEventListener('click', (event) => {
-            event.preventDefault();
-            dropdownParent.classList.toggle('open');
         });
     </script>
 </body>
