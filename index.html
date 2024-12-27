@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            transform: translate(100px, 30px); /* 向右移动100px，向下移动50px */
+            transform: translate(100px, 30px);
         }
 
         header {
@@ -26,10 +26,10 @@
         }
 
         .logo img {
-            max-width: 150px; /* 设置图片的最大宽度 */
-            max-height: 50px; /* 设置图片的最大高度 */
-            height: auto; /* 保持宽高比 */
-            width: auto; /* 保持宽高比 */
+            max-width: 150px;
+            max-height: 50px;
+            height: auto;
+            width: auto;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
@@ -47,7 +47,7 @@
             text-decoration: none;
             font-weight: bold;
             position: relative;
-            font-size: 1.2em; /* 调整字体大小 */
+            font-size: 1.2em;
             font-family: 'Montserrat';
         }
 
@@ -71,8 +71,8 @@
             padding: 10px;
             text-decoration: none;
             white-space: nowrap;
-            background-color: #fff; /* Ensure background is consistent */
-            font-size: 0.8em; /* 调整字体大小，变小一些 */
+            background-color: #fff;
+            font-size: 0.8em;
         }
 
         .dropdown a:hover {
@@ -80,7 +80,7 @@
         }
 
         nav .has-dropdown.open .dropdown {
-            display: flex;
+            display: flex !important;
         }
 
         .container {
@@ -153,7 +153,6 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
-            /* 改变导航的显示方式 */
             nav {
                 position: relative;
                 top: auto;
@@ -257,12 +256,12 @@
         });
 
         // 处理下拉菜单
-        const researchLink = document.querySelector('.has-dropdown a');
+        const dropdownParent = document.querySelector('.has-dropdown');
         const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
 
-        researchLink.addEventListener('click', (event) => {
-            event.preventDefault();  // 阻止默认行为
-            dropdownMenu.classList.toggle('open');  // 切换显示或隐藏
+        dropdownParent.addEventListener('click', (event) => {
+            event.preventDefault(); // 阻止链接跳转
+            dropdownParent.classList.toggle('open'); // 切换类名，控制样式
         });
     </script>
 </body>
