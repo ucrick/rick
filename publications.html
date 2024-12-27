@@ -1,220 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPMS Research Group</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPMS Research Group</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        header {
-            color: #000;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #ddd;
-        }
+header {
+    color: #000;
+    padding: 20px 20px 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+}
 
-        .logo img {
-            max-width: 150px;
-            max-height: 50px;
-            height: auto;
-            width: auto;
-        }
+.logo img {
+    max-width: 150px;
+    max-height: 50px;
+    height: auto;
+    width: auto;
+}
 
-        nav {
-            display: flex;
-            gap: 30px;
-        }
+nav {
+    display: flex;
+    gap: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
 
-        nav a {
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-        }
+nav a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    font-size: 1.2em;
+}
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+nav a:hover {
+    text-decoration: underline;
+}
 
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            display: none;
-            flex-direction: column;
-            z-index: 10;
-        }
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+}
 
-        .dropdown a {
-            color: #000;
-            padding: 10px;
-            text-decoration: none;
-            background-color: #fff;
-        }
+.dropdown a {
+    color: #000;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #fff;
+    font-size: 0.8em;
+}
 
-        .dropdown a:hover {
-            background-color: #f0f0f0;
-        }
+.dropdown a:hover {
+    background-color: #f0f0f0;
+}
 
-        .has-dropdown {
-            position: relative;
-        }
+nav .has-dropdown:focus-within .dropdown {
+    display: flex;
+}
 
-        .has-dropdown.open .dropdown {
-            display: flex;
-        }
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
 
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-        }
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
 
-        .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: #000;
-            margin: 5px 0;
-        }
+.sidebar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
 
-        .container {
-            display: flex;
-            margin: 20px;
-            flex-wrap: wrap;
-        }
+.sidebar .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
 
-        .sidebar {
-            width: 250px;
-            padding: 20px;
-            text-align: center;
-        }
+.sidebar .details a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    margin: 5px 0;
+}
 
-        .sidebar img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
+.sidebar .details a img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
 
-        .content {
-            flex: 1;
-            padding: 20px;
-            min-width: 300px;
-        }
+.sidebar .details a:hover {
+    text-decoration: underline;
+}
 
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 45px;
+}
 
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                flex-direction: column;
-                background-color: #f8f8f8;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                z-index: 100;
-                gap: 10px;
-                border-top: 1px solid #ddd;
-            }
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
 
-            nav.open {
-                display: flex;
-            }
+footer p {
+    margin: 0;
+}
 
-            .menu-toggle {
-                display: block;
-            }
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-            .container {
-                flex-direction: column;
-            }
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+        left: 0;
+    }
 
-            .sidebar {
-                width: 100%;
-                margin-bottom: 20px;
-            }
+    nav a {
+        font-size: 1em;
+    }
 
-            .content {
-                padding: 10px;
-            }
-        }
-    </style>
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        padding: 10px;
+        margin-left: 0;
+    }
+
+    footer {
+        padding: 20px;
+        left: 0;
+    }
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/H1.jpg" alt="Logo Icon">
-        </div>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <div class="has-dropdown">
-                <a href="#">Research</a>
-                <div class="dropdown">
-                    <a href="high.html">High-Performance Structures</a>
-                    <a href="anti.html">Anti-Seismic Devices</a>
-                    <a href="structural.html">Structural Fire</a>
-                    <a href="ai.html">AI in Structures</a>
-                </div>
-            </div>
-            <a href="teams.html">Teams</a>
-            <a href="publications.html">Publications</a>
-        </nav>
-    </header>
-    <div class="container">
-        <div class="sidebar">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
-            <div class="details">
-                <p><strong>KE JIANG</strong></p>
-                <p>Email | LinkedIn | Google Scholar | Website</p>
+<header>
+    <div class="logo"><img src="images/H1.jpg" alt="Logo Icon"></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <div class="has-dropdown">
+            <a href="#">Research</a>
+            <div class="dropdown">
+                <a href="high.html">High-Performance Structures</a>
+                <a href="anti.html">Anti-Seismic Devices</a>
+                <a href="structural.html">Structural Fire</a>
+                <a href="ai.html">AI in Structures</a>
             </div>
         </div>
-        <div class="content">
-            <h1>Research Interests</h1>
-            <p>Details about research interests will go here.</p>
-            <h1>News and Updates</h1>
-            <p>Details about news and updates will go here.</p>
+        <a href="teams.html">Teams</a>
+        <a href="publications.html">Publications</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="sidebar">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture">
+        <div class="details">
+            <p><strong>KE JIANG</strong></p>
+            <a href="#"><img src="images/H1.jpg" alt="Email Icon">Email</a>
+            <a href="#"><img src="images/H1.jpg" alt="LinkedIn Icon">LinkedIn</a>
+            <a href="#"><img src="images/H1.jpg" alt="Google Scholar Icon">Google Scholar</a>
+            <a href="#"><img src="images/H1.jpg" alt="Website Icon">Website</a>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2024. High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
-    </footer>
+    <div class="content">
+        <h1>Sample Table</h1>
+        <div style="position: absolute; top: 190px; left: 50%; transform: translateX(-50%);">
+            <table border="0" cellspacing="0" cellpadding="5" style="border-collapse: collapse; width: 600px; text-align: center;">
+                <colgroup>
+                    <col style="width: 70%;"> 
+                    <col style="width: 30%;"> 
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th style="border-top: 2px solid #000; border-bottom: 2px solid #000; border-right: 2px solid #000;">Column 1</th>
+                        <th style="border-top: 2px solid #000; border-bottom: 2px solid #000;">Column 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 1, Cell 1</td>
+                        <td>Row 1, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 2, Cell 1</td>
+                        <td>Row 2, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 3, Cell 1</td>
+                        <td>Row 3, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 4, Cell 1</td>
+                        <td>Row 4, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 5, Cell 1</td>
+                        <td>Row 5, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 6, Cell 1</td>
+                        <td>Row 6, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td  style="border-right: 2px solid #000;">Row 7, Cell 1</td>
+                        <td>Row 7, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom: 2px solid #000;border-right: 2px solid #000;">Row 8, Cell 1</td>
+                        <td style="border-bottom: 2px solid #000;">Row 8, Cell 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-    <script>
-        // 菜单切换按钮
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
+<footer>
+    <p>&copy; 2024. High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
+</footer>
 
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-        });
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdownParent = document.querySelector('.has-dropdown');
+    const dropdown = dropdownParent.querySelector('.dropdown');
 
-        // 下拉菜单切换
-        const dropdownParent = document.querySelector('.has-dropdown');
-        dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault();
-            dropdownParent.classList.toggle('open');
-        });
-    </script>
+    dropdownParent.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        if (dropdown.style.display === 'flex') {
+            dropdown.style.display = 'none';
+        } else {
+            dropdown.style.display = 'flex';
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!dropdownParent.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
