@@ -198,5 +198,35 @@
     <footer>
         <p>&copy; 2024. High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
     </footer>
+
+	    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownParent = document.querySelector('.has-dropdown');
+            const dropdown = dropdownParent.querySelector('.dropdown');
+
+            dropdownParent.addEventListener('click', (event) => {
+                // 阻止默认行为，防止跳转
+                event.preventDefault();
+
+                // 切换显示状态
+                if (dropdown.style.display === 'flex') {
+                    dropdown.style.display = 'none';
+                } else {
+                    dropdown.style.display = 'flex';
+                }
+            });
+
+            // 可选：点击页面其他地方关闭菜单
+            document.addEventListener('click', (event) => {
+                if (!dropdownParent.contains(event.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+
+	
 </body>
 </html>
