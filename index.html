@@ -79,7 +79,7 @@
             background-color: #f0f0f0;
         }
 
-        nav .has-dropdown:focus-within .dropdown {
+        nav .has-dropdown.open .dropdown {
             display: flex;
         }
 
@@ -186,25 +186,6 @@
                 margin: 5px 0;
             }
 
-            /* 下拉菜单也需要响应式调整 */
-            .dropdown {
-                position: static;
-                display: none;
-                flex-direction: column;
-                margin-top: 10px;
-            }
-
-            .dropdown a {
-                font-size: 1em;
-                padding: 10px;
-                text-decoration: none;
-                background-color: #fff;
-            }
-
-            .dropdown a:hover {
-                background-color: #f0f0f0;
-            }
-
             .container {
                 flex-direction: column;
             }
@@ -275,11 +256,13 @@
             nav.classList.toggle('open');
         });
 
-        // 下拉菜单切换
-        const dropdownParent = document.querySelector('.has-dropdown');
-        dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault();
-            dropdownParent.classList.toggle('open');
+        // 处理下拉菜单
+        const researchLink = document.querySelector('.has-dropdown a');
+        const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
+
+        researchLink.addEventListener('click', (event) => {
+            event.preventDefault();  // 阻止默认行为
+            dropdownMenu.classList.toggle('open');  // 切换显示或隐藏
         });
     </script>
 </body>
