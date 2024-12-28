@@ -142,7 +142,9 @@
             text-align: center;
             padding: 50px 0;
             margin: 0;
-            width: 100%;
+            width: 100vw;
+            position: relative;
+            left: -100px;
         }
 
         footer p {
@@ -151,6 +153,12 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
+            body {
+                transform: none;
+                margin: 0;
+                padding: 0;
+            }
+
             nav {
                 position: relative;
                 top: auto;
@@ -188,17 +196,36 @@
             }
 
             .sidebar {
-                width: 90%; /* 缩小宽度 */
+                width: 100%;
                 margin-bottom: 20px;
             }
 
             .sidebar img {
-                width: 100px; /* 调整图片大小 */
-                height: 100px;
+                width: 80px;
+                height: 80px;
+            }
+
+            .sidebar .details {
+                font-size: 0.9em;
+            }
+
+            .sidebar .details a img {
+                width: 14px;
+                height: 14px;
+                margin-left: 50px;
+            }
+
+            .sidebar .details a {
+                font-size: 0.8em;
             }
 
             .content {
                 margin-left: 0;
+            }
+
+            footer {
+                width: 100%;
+                left: 0;
             }
         }
     </style>
