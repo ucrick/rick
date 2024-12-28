@@ -63,7 +63,7 @@
             border: 1px solid #ddd;
             display: none;
             flex-direction: column;
-            z-index: 10;
+            z-index: 9999;
         }
 
         .dropdown a {
@@ -151,12 +151,10 @@
             margin: 0;
         }
 
-        /* 增大正文字体 */
         .content p {
             font-size: 1.2em;
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             body {
                 transform: none;
@@ -272,7 +270,7 @@
         <div class="content">
             <h1>Research Interests</h1>
             <p>Details about research interests will go here.</p>
-            <br> <!-- 增加空行 -->
+            <br>
             <h1>News and Updates</h1>
             <p>Details about news and updates will go here.</p>
         </div>
@@ -282,33 +280,27 @@
     </footer>
 
     <script>
-                // 菜单切换按钮
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
-        
+
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('open');
         });
-        
-        // 处理下拉菜单
+
         const dropdownParent = document.querySelector('.has-dropdown');
-        const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
-        
-        // 父菜单点击事件
         dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault(); // 阻止父菜单链接跳转
-            dropdownParent.classList.toggle('open'); // 切换下拉菜单显示/隐藏
-        });
-        
-        // 子菜单项点击事件
-        const dropdownLinks = document.querySelectorAll('.has-dropdown .dropdown a');
-        dropdownLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                dropdownParent.classList.remove('open'); // 关闭下拉菜单
-                // 不阻止默认行为，允许跳转
-            });
+            if (!event.target.closest('.dropdown a')) {
+                event.preventDefault();
+                dropdownParent.classList.toggle('open');
+            }
         });
 
+        const dropdownLinks = document.querySelectorAll('.has-dropdown .dropdown a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                dropdownParent.classList.remove('open');
+            });
+        });
     </script>
 </body>
 </html>
