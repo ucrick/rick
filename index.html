@@ -48,6 +48,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.2em;
+            font-family: 'Montserrat';
         }
 
         nav a:hover {
@@ -141,9 +142,7 @@
             text-align: center;
             padding: 50px 0;
             margin: 0;
-            width: 100vw;
-            position: relative;
-            left: -100px;
+            width: 100%;
         }
 
         footer p {
@@ -152,12 +151,6 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
-            body {
-                transform: none;
-                margin: 0;
-                padding: 0;
-            }
-
             nav {
                 position: relative;
                 top: auto;
@@ -195,31 +188,13 @@
             }
 
             .sidebar {
-                width: 100%;
-                padding: 10px; /* 缩小边距 */
-                margin-bottom: 10px; /* 缩小与内容的间距 */
+                width: 90%; /* 缩小宽度 */
+                margin-bottom: 20px;
             }
 
             .sidebar img {
-                width: 70px; /* 缩小头像宽度 */
-                height: 70px; /* 缩小头像高度 */
-                margin-bottom: 5px; /* 缩小头像与下方内容的间距 */
-            }
-
-            .sidebar .details {
-                font-size: 0.9em; /* 保持文字清晰度 */
-                padding: 0; /* 去掉额外的内边距 */
-            }
-
-            .sidebar .details a {
-                font-size: 0.8em;
-                margin: 3px 0; /* 减少链接之间的间距 */
-            }
-
-            .sidebar .details a img {
-                width: 12px; /* 缩小图标 */
-                height: 12px;
-                margin-left: 20px; /* 减少图标与文字的间距 */
+                width: 100px; /* 调整图片大小 */
+                height: 100px;
             }
 
             .content {
@@ -275,6 +250,7 @@
     </footer>
 
     <script>
+        // 菜单切换按钮
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
@@ -282,12 +258,13 @@
             nav.classList.toggle('open');
         });
 
+        // 处理下拉菜单
         const dropdownParent = document.querySelector('.has-dropdown');
         const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
 
         dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault();
-            dropdownParent.classList.toggle('open');
+            event.preventDefault(); // 阻止链接跳转
+            dropdownParent.classList.toggle('open'); // 切换类名，控制样式
         });
     </script>
 </body>
