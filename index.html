@@ -153,6 +153,24 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
+            nav {
+                position: relative;
+                top: auto;
+                left: auto;
+                flex-direction: column;
+                gap: 20px;
+                display: none;
+                background-color: #f8f8f8;
+                width: 100%;
+                padding: 10px;
+                margin-top: 20px;
+                z-index: 1000;
+            }
+
+            nav.open {
+                display: flex;
+            }
+
             .menu-toggle {
                 display: block;
                 cursor: pointer;
@@ -167,30 +185,8 @@
                 margin: 5px 0;
             }
 
-            nav {
-                display: none;
-                flex-direction: column;
-                gap: 20px;
-                background-color: #f8f8f8;
-                width: 100%;
-                padding: 10px;
-                margin-top: 10px;
-            }
-
-            nav.open {
-                display: flex;
-            }
-
-            nav a {
-                font-size: 1em;
-                padding: 10px 0;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-
             .container {
                 flex-direction: column;
-                padding: 10px;
             }
 
             .sidebar {
@@ -200,17 +196,6 @@
 
             .content {
                 margin-left: 0;
-                padding: 10px;
-            }
-
-            .sidebar .details a {
-                font-size: 0.9em;
-                margin: 10px 0;
-            }
-
-            footer {
-                font-size: 0.8em;
-                padding: 20px 10px;
             }
         }
     </style>
@@ -262,6 +247,7 @@
     </footer>
 
     <script>
+        // 菜单切换按钮
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
@@ -269,10 +255,13 @@
             nav.classList.toggle('open');
         });
 
+        // 处理下拉菜单
         const dropdownParent = document.querySelector('.has-dropdown');
+        const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
+
         dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault();
-            dropdownParent.classList.toggle('open');
+            event.preventDefault(); // 阻止链接跳转
+            dropdownParent.classList.toggle('open'); // 切换类名，控制样式
         });
     </script>
 </body>
