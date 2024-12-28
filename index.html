@@ -295,8 +295,19 @@
         const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
 
         dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault(); // 阻止链接跳转
-            dropdownParent.classList.toggle('open'); // 切换类名，控制样式
+            // 阻止父级菜单项的默认链接行为
+            event.preventDefault();
+            // 切换下拉菜单的显示/隐藏
+            dropdownParent.classList.toggle('open');
+        });
+
+        // 修改为对子菜单项的点击进行页面跳转，不再阻止默认行为
+        const dropdownLinks = document.querySelectorAll('.has-dropdown .dropdown a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // 切换菜单的显示/隐藏后，点击链接正常跳转
+                dropdownParent.classList.remove('open');
+            });
         });
     </script>
 </body>
