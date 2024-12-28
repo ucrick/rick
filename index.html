@@ -48,7 +48,6 @@
             font-weight: bold;
             position: relative;
             font-size: 1.2em;
-            font-family: 'Montserrat';
         }
 
         nav a:hover {
@@ -197,35 +196,34 @@
 
             .sidebar {
                 width: 100%;
-                margin-bottom: 20px;
+                padding: 10px; /* 缩小边距 */
+                margin-bottom: 10px; /* 缩小与内容的间距 */
             }
 
             .sidebar img {
-                width: 80px;
-                height: 80px;
+                width: 70px; /* 缩小头像宽度 */
+                height: 70px; /* 缩小头像高度 */
+                margin-bottom: 5px; /* 缩小头像与下方内容的间距 */
             }
 
             .sidebar .details {
-                font-size: 0.9em;
-            }
-
-            .sidebar .details a img {
-                width: 14px;
-                height: 14px;
-                margin-left: 50px;
+                font-size: 0.9em; /* 保持文字清晰度 */
+                padding: 0; /* 去掉额外的内边距 */
             }
 
             .sidebar .details a {
                 font-size: 0.8em;
+                margin: 3px 0; /* 减少链接之间的间距 */
+            }
+
+            .sidebar .details a img {
+                width: 12px; /* 缩小图标 */
+                height: 12px;
+                margin-left: 20px; /* 减少图标与文字的间距 */
             }
 
             .content {
                 margin-left: 0;
-            }
-
-            footer {
-                width: 100%;
-                left: 0;
             }
         }
     </style>
@@ -277,7 +275,6 @@
     </footer>
 
     <script>
-        // 菜单切换按钮
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
@@ -285,13 +282,12 @@
             nav.classList.toggle('open');
         });
 
-        // 处理下拉菜单
         const dropdownParent = document.querySelector('.has-dropdown');
         const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
 
         dropdownParent.addEventListener('click', (event) => {
-            event.preventDefault(); // 阻止链接跳转
-            dropdownParent.classList.toggle('open'); // 切换类名，控制样式
+            event.preventDefault();
+            dropdownParent.classList.toggle('open');
         });
     </script>
 </body>
