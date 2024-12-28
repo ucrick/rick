@@ -282,33 +282,33 @@
     </footer>
 
     <script>
-        // 菜单切换按钮
+                // 菜单切换按钮
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
-
+        
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('open');
         });
-
+        
         // 处理下拉菜单
         const dropdownParent = document.querySelector('.has-dropdown');
         const dropdownMenu = document.querySelector('.has-dropdown .dropdown');
-
+        
+        // 父菜单点击事件
         dropdownParent.addEventListener('click', (event) => {
-            // 阻止父级菜单项的默认链接行为
-            event.preventDefault();
-            // 切换下拉菜单的显示/隐藏
-            dropdownParent.classList.toggle('open');
+            event.preventDefault(); // 阻止父菜单链接跳转
+            dropdownParent.classList.toggle('open'); // 切换下拉菜单显示/隐藏
         });
-
-        // 修改为对子菜单项的点击进行页面跳转，不再阻止默认行为
+        
+        // 子菜单项点击事件
         const dropdownLinks = document.querySelectorAll('.has-dropdown .dropdown a');
         dropdownLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // 切换菜单的显示/隐藏后，点击链接正常跳转
-                dropdownParent.classList.remove('open');
+            link.addEventListener('click', (event) => {
+                dropdownParent.classList.remove('open'); // 关闭下拉菜单
+                // 不阻止默认行为，允许跳转
             });
         });
+
     </script>
 </body>
 </html>
