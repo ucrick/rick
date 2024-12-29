@@ -49,11 +49,43 @@
             font-weight: bold;
             position: relative;
             font-size: 1.2em;
-            font-family: 'Montserrat';
         }
 
         nav a:hover {
             text-decoration: underline;
+        }
+
+        .has-dropdown {
+            position: relative;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            z-index: 1000;
+            min-width: 200px;
+        }
+
+        .dropdown a {
+            padding: 10px 15px;
+            color: #000;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .has-dropdown:hover .dropdown {
+            display: flex;
         }
 
         .container {
@@ -188,7 +220,15 @@
         <div class="logo"><img src="images/H1.jpg" alt="Logo Icon"></div>
         <nav>
             <a href="index.html">Home</a>
-            <a href="#">Research</a>
+            <div class="has-dropdown">
+                <a href="#">Research</a>
+                <div class="dropdown">
+                    <a href="high.html">High-Performance Structures</a>
+                    <a href="anti.html">Anti-Seismic Devices</a>
+                    <a href="structural.html">Structural Fire</a>
+                    <a href="ai.html">AI in Structures</a>
+                </div>
+            </div>
             <a href="teams.html">Teams</a>
             <a href="publications.html">Publications</a>
         </nav>
@@ -205,7 +245,7 @@
             </div>
         </div>
         <div class="content">
-	    <h1>Research Interests</h1>
+            <h1>Research Interests</h1>
             <p>Details about research interests will go here.</p>
             <br>
             <div style="display: flex; align-items: center;">
