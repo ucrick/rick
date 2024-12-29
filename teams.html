@@ -50,10 +50,39 @@
             font-weight: bold;
             position: relative;
             font-size: 1.2em;
+            font-family: 'Montserrat';
         }
 
         nav a:hover {
             text-decoration: underline;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            display: none;
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        .dropdown a {
+            color: #000;
+            padding: 10px;
+            text-decoration: none;
+            white-space: nowrap;
+            background-color: #fff;
+            font-size: 0.8em;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav .has-dropdown.open .dropdown {
+            display: flex !important;
         }
 
         .container {
@@ -122,6 +151,10 @@
 
         footer p {
             margin: 0;
+        }
+
+        .content p {
+            font-size: 1.2em;
         }
 
         @media (max-width: 768px) {
@@ -212,6 +245,15 @@
         </div>
         <nav>
             <a href="index.html">Home</a>
+            <div class="has-dropdown">
+                <a href="#">Research</a>
+                <div class="dropdown">
+                    <a href="high.html">High-Performance Structures</a>
+                    <a href="anti.html">Anti-Seismic Devices</a>
+                    <a href="structural.html">Structural Fire</a>
+                    <a href="ai.html">AI in Structures</a>
+                </div>
+            </div>
             <a href="teams.html">Teams</a>
             <a href="publications.html">Publications</a>
         </nav>
@@ -222,28 +264,28 @@
             <div class="details">
                 <p><strong>KE JIANG</strong></p>
                 <a href="mailto:example@example.com"><img src="images/H1.jpg" alt="Email Icon">Email</a>
-                <a href="#"><img src="images/H1.jpg" alt="LinkedIn Icon">LinkedIn</a>
-                <a href="#"><img src="images/H1.jpg" alt="Google Scholar Icon">Google Scholar</a>
-                <a href="#"><img src="images/H1.jpg" alt="Website Icon">Website</a>
+                <a href="https://www.bilibili.com/"><img src="images/H1.jpg" alt="LinkedIn Icon">LinkedIn</a>
+                <a href="https://www.bilibili.com/"><img src="images/H1.jpg" alt="Google Scholar Icon">Google Scholar</a>
+                <a href="https://www.bilibili.com/"><img src="images/H1.jpg" alt="Website Icon">Website</a>
             </div>
         </div>
         <div class="content">
-            <h1 style="color: red; font-weight: bold;">Team</h1>
-            <h2 style="font-weight: bold;">Ph.D. Students</h2>
-            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                <img src="images/1.jpg" alt="Tessa Haldes" style="width: 100px; height: 100px; border-radius: 50%; margin-right: 15px;">
-                <div>
-                    <p style="font-weight: bold; margin: 0;">Tessa Haldes</p>
-                    <p style="margin: 0;">(co-advise with Professor Susan Hagness)</p>
+            <h1>Team</h1>
+            <h2>Ph.D. Students</h2>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <img src="images/1.jpg" alt="Tessa Haldes" style="width: 100px; height: 100px; border-radius: 50%;">
+                    <div>
+                        <p style="margin: 0; font-size: 1.2em; font-weight: bold;">Tessa Haldes</p>
+                        <p style="margin: 0;">(co-advise with Professor Susan Hagness)</p>
+                    </div>
                 </div>
-            </div>
-            <div style="display: flex; align-items: center;">
-                <img src="images/1.jpg" alt="Yuki Gao" style="width: 100px; height: 100px; border-radius: 50%; margin-right: 15px;">
-                <div>
-                    <p style="font-weight: bold; margin: 0;">Yuki Gao</p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>ECE Distinguished Graduate Fellowship</li>
-                    </ul>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <img src="images/1.jpg" alt="Yuki Gao" style="width: 100px; height: 100px; border-radius: 50%;">
+                    <div>
+                        <p style="margin: 0; font-size: 1.2em; font-weight: bold;">Yuki Gao</p>
+                        <p style="margin: 0;">• ECE Distinguished Graduate Fellowship</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -258,6 +300,21 @@
 
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('open');
+        });
+
+        const dropdownParent = document.querySelector('.has-dropdown');
+        dropdownParent.addEventListener('click', (event) => {
+            if (!event.target.closest('.dropdown a')) {
+                event.preventDefault();
+                dropdownParent.classList.toggle('open');
+            }
+        });
+
+        const dropdownLinks = document.querySelectorAll('.has-dropdown .dropdown a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                dropdownParent.classList.remove('open');
+            });
         });
     </script>
 </body>
